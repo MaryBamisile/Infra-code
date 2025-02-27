@@ -114,6 +114,11 @@ If Ansible fails to connect:
 ```sh
 ssh -i C:/Users/Maryk/Downloads/task4-piv adminuser@<public-ip>
 ```
+### **Accessing the Services
+The endpoints are accessible via:
+https://maytech.name.ng/api/users
+https://maytech.name.ng/api/auth
+
 
 ## **Conclusion**
 This project demonstrates an automated approach to provisioning and configuring cloud infrastructure using **Terraform** and **Ansible**. The infrastructure is secure, scalable, and repeatable for production deployments.
