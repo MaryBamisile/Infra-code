@@ -1,18 +1,37 @@
-- name: Install Docker and Deploy Application
-  hosts: all
-  become: true
+---
+- hosts: all
+  become: yes
   tasks:
-    - name: Install dependencies
+    - name: Install Docker
       apt:
-        name: 
-          - docker.io
-          - docker-compose
+        name: docker.io
         state: present
+        update_cache: yes
+
+    - name: Install Docker Compose
+      get_url:
+        url: https://github.com/docker/compose/releases/download/v2.1.1/docker-compose-linux-x86_64
+        dest: /usr/local/bin/docker-compose
+        mode: '0755'
 
     - name: Clone the application repository
       git:
-        repo: "https://github.com/YOUR_GITHUB_USERNAME/DevOps-Stage-4.git"
-        dest: "/home/ubuntu/todo-app"
+        repo: 'https://github.com/MaryBamisile/DevOps-Stage-4.git'
+        dest: /app
+        version: main
 
-    - name: Deploy the application
-      shell: "cd /home/ubuntu/todo-app && docker-compose up -d"
+    - name: Copy docker-compose.yml
+      copy:
+        src: /app/docker-compose.yml
+        dest: /app/docker-compose.yml
+
+    - name: Create letsencrypt directory
+      file:
+        path: /app/letsencrypt
+        state: directory
+        mode: '0755'
+
+    - name: Start Docker Compose
+      command: docker-compose up -d
+      args:
+        chdir: /app
