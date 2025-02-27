@@ -142,20 +142,21 @@ resource "azurerm_linux_virtual_machine" "vm" {
   }
 
   admin_ssh_key {
-    username   = "adminuser"
-    public_key = file("~/.ssh/id_rsa.pub")
-  }
+  username   = "adminuser"
+  public_key = file("C:/Users/Maryk/Downloads/task4-pub.pem")
+}
 
   
   # Provisioner to copy Ansible playbook to VM
   provisioner "file" {
-    source      = "/Users/user/Downloads/Infra-code/playbook.yml"  # Your local playbook file location
+    source = "C:/Users/Maryk/Downloads/Infra-code/playbook.yml"
+  # Your local playbook file location
     destination = "/home/adminuser/Infra-code/playbook.yml"
 
     connection {
       type        = "ssh"
       user        = "adminuser"
-      private_key = file("~/.ssh/id_rsa")
+      private_key = file("C:/Users/Maryk/Downloads/task4-piv.pem")
       host        = azurerm_public_ip.public_ip.ip_address
     }
   }
@@ -170,7 +171,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
     connection {
       type        = "ssh"
       user        = "adminuser"
-      private_key = file("~/.ssh/id_rsa")
+      private_key = file("C:/Users/Maryk/Downloads/task4-piv.pem")
       host        = azurerm_public_ip.public_ip.ip_address
     }
   }
@@ -186,7 +187,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
     connection {
       type        = "ssh"
       user        = "adminuser"
-      private_key = file("~/.ssh/id_rsa")
+      private_key = file("C:/Users/Maryk/Downloads/task4-piv.pem")
       host        = azurerm_public_ip.public_ip.ip_address
     }
   }  
