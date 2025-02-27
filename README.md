@@ -117,6 +117,7 @@ ssh -i C:/Users/Maryk/Downloads/task4-piv adminuser@<public-ip>
 ### **Accessing the Services
 The endpoints are accessible via:
 https://maytech.name.ng/api/users
+
 https://maytech.name.ng/api/auth
 
 
