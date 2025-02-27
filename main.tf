@@ -149,8 +149,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
   
   # Provisioner to copy Ansible playbook to VM
   provisioner "file" {
-    source      = "/Users/user/Downloads/DevOps-Stage4-Infra/ansible-playbook.yml"  # Your local playbook file location
-    destination = "/home/adminuser/ansible-playbook.yml"
+    source      = "/Users/user/Downloads/Infra-code/playbook.yml"  # Your local playbook file location
+    destination = "/home/adminuser/Infra-code/playbook.yml"
 
     connection {
       type        = "ssh"
@@ -180,7 +180,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
     inline = [
       "sudo apt update -y",
       "sudo apt install -y ansible",
-      "ansible-playbook -i /home/adminuser/inventory /home/adminuser/ansible-playbook.yml",
+      "ansible-playbook -i /home/adminuser/inventory /home/adminuser/playbook.yml",
     ]
 
     connection {
