@@ -117,9 +117,10 @@ ssh -i C:/Users/Maryk/Downloads/task4-piv adminuser@<public-ip>
 ### **Accessing the Services
 The endpoints are accessible via:
 https://maytech.name.ng/api/users
-
+<br>
 https://maytech.name.ng/api/auth
-
+<br>
+Traefik dashboard: http://52.151.35.11:8080/dashboard
 
 ## **Conclusion**
 This project demonstrates an automated approach to provisioning and configuring cloud infrastructure using **Terraform** and **Ansible**. The infrastructure is secure, scalable, and repeatable for production deployments.
